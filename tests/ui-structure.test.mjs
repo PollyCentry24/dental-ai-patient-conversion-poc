@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const css=readFileSync(new URL('../style.css',import.meta.url),'utf8');
+const app=readFileSync(new URL('../src/app.mjs',import.meta.url),'utf8');
+test('Guided tour has all three steps',()=>{for(const id of ['tour-inquiry','tour-booking','tour-impact']) assert.ok(html.includes('id="'+id+'"'));});
+test('Conversation, scheduling, outcome views remain visible in source',()=>{for(const id of ['view-demo','view-booking','view-insights','chat-form','check-slot','funnel-chart']) assert.ok(html.includes('id="'+id+'"'));});
+test('Tour links to booking and outcome with prefilled fictional consultation',()=>{assert.match(app,/function prefillConsultation/);assert.match(app,/Veneer consultation/);assert.match(app,/go-insights/);});
+test('Centry 24 branding and important disclosure are present',()=>{assert.match(html,/Centry 24/);assert.match(html,/NOT FOR CLINICAL USE/);assert.match(html,/ALL FIGURES SYNTHETIC/);});
+test('Responsive tour and visible focus states exist',()=>{assert.match(css,/\.guided-tour/);assert.match(css,/@media\(max-width:740px\)/);assert.match(css,/:focus-visible/);});
