@@ -1,0 +1,13 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {respondToPatient,checkBooking,demoSlots,sampleFunnel} from '../src/engine.mjs';
+test('Thai veneer inquiry retrieves sample answer',()=>assert.equal(respondToPatient('ราคา วีเนียร์').source,'Sample veneer FAQ'));
+test('English scaling query retrieves sample answer',()=>assert.equal(respondToPatient('Do you offer scaling?').source,'Sample scaling FAQ'));
+test('swelling requires human escalation',()=>assert.equal(respondToPatient('หน้าบวม ปวดมาก').risk,'high'));
+test('clinical decisions are escalated',()=>assert.equal(respondToPatient('ต้องถอนฟันไหม').risk,'high'));
+test('after hours booking routes to booking request',()=>assert.equal(respondToPatient('วันเสาร์มีคิวไหมคะ').stage,'Booking request'));
+test('unsupported FAQ routes to staff',()=>assert.equal(respondToPatient('German medical certificate?').risk,'medium'));
+test('eligible fictional slot accepted',()=>assert.equal(checkBooking(demoSlots[0]).ok,true));
+test('ineligible fictional slot rejected',()=>assert.equal(checkBooking({...demoSlots[0],time:'15:00'}).ok,false));
+test('missing fields do not confirm',()=>assert.equal(checkBooking({service:'Scaling'}).ok,false));
+test('funnel decreases',()=>assert.ok(sampleFunnel.every((s,i)=>i===0||s.count<=sampleFunnel[i-1].count)));
+test('urgent English symptoms escalate',()=>assert.equal(respondToPatient('difficulty breathing').risk,'high'));
+test('supported FAQ has transparent source',()=>assert.ok(respondToPatient('implant').source));
