@@ -1,4 +1,4 @@
-# Dental AI — Patient Conversion Lab
+# Centry 24 Dental AI — Patient Conversion Lab
 
 **From ad-generated inquiry to an actionable appointment request.**
 
@@ -10,6 +10,14 @@ An interactive, open-in-your-browser **proof of concept** for an AI-assisted fro
 **Interactive prototype:** Open `index.html` through a local HTTP server, or enable GitHub Pages for this repository.
 
 **Planned live demo URL:** `https://PollyCentry24.github.io/dental-ai-patient-conversion-poc/` (available after GitHub Pages is enabled in Settings → Pages).
+
+## See the slide demo as a guided walkthrough
+
+The public website now follows the same **Centry 24 patient journey** shown in the pitch deck. From **Conversation lab**, click the three walkthrough buttons:
+
+**01 Patient asks** (fictional veneer Facebook inquiry) → **02 Check a slot** (sample dentist, day and time, no real booking) → **03 Track the visit** (synthetic lead funnel).
+
+Read the [one-minute illustrated workflow guide](docs/demo-walkthrough.md). This remains a scripted, deterministic proof of concept — not an LLM, diagnosis tool, integrated booking system or real conversion measurement.
 
 ## What you can try in 2 minutes
 
