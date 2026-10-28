@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark">
+<title>Dental AI — Patient Conversion Lab | Proof of Concept</title>
+<meta name="description" content="An interactive proof of concept: from Thai dental inquiries to clinic-approved replies, safe scheduling and simulated lead analytics.">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#demo" aria-label="Dental AI Home"><span class="brandmark">D<span class="spark">✦</span></span><span><b>Dental AI</b><small>PATIENT CONVERSION LAB</small></span></a>
+    <div class="workspace-caption">DEMONSTRATION SPACE</div>
+    <nav class="nav" aria-label="Demo sections">
+      <button data-view="demo" class="nav-button active"><span class="navicon">◉</span><span>Conversation lab</span></button>
+      <button data-view="booking" class="nav-button"><span class="navicon">▦</span><span>Booking rules</span></button>
+      <button data-view="insights" class="nav-button"><span class="navicon">↗</span><span>Conversion signals</span></button>
+      <button data-view="architecture" class="nav-button"><span class="navicon">◇</span><span>System & safeguards</span></button>
+    </nav>
+    <div class="side-end">
+      <div class="micro-title">BUILT TO DEMONSTRATE</div>
+      <p>Firsthand clinic insight × quantitative problem-solving</p>
+      <div class="side-separator"></div>
+      <p class="micro">Synthetic patients • Fictional clinic • No live integrations</p>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="crumb">Dental AI <span>/</span> <strong id="breadcrumb">Conversation lab</strong></div><span class="prototype-status"><span class="status-light"></span> PROOF OF CONCEPT · NOT FOR CLINICAL USE</span></header>
+    <section class="view active" id="view-demo">
+      <div class="hero"><div class="hero-content"><h1>Turn the first message into <em>a next step.</em></h1><p>A concept for Thai independent dental clinics: answer approved FAQs, recognize when a dentist is needed, and move qualified inquiries toward appointments.</p><div class="hero-tags"><span>Facebook / LINE concept</span><span>Thai + English</span><span>Offline retrieval</span></div></div><div class="hero-visual" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-center">AI<span>↗</span></div></div></div>
+      <div class="section-head"><h2>Interactive patient inbox</h2><p>Choose a scenario or write your own message. All responses are illustrative.</p></div>
+      <div class="scene-row" aria-label="Demo scenarios">
+        <button class="scenario selected" data-message="สนใจทำวีเนียร์ค่ะ ราคาเท่าไหร่"><span class="scenario-index">01</span><b>Ad-generated lead</b><small>Veneers · pricing question</small></button>
+        <button class="scenario" data-message="วันเสาร์มีคิวไหมคะ อยากขอนัดหมาย"><span class="scenario-index">02</span><b>After-hours booking</b><small>Availability request</small></button>
+        <button class="scenario" data-message="หน้าบวม ปวดมาก ต้องถอนฟันไหม"><span class="scenario-index">03</span><b>Clinical escalation</b><small>Safety handoff</small></button>
+        <button class="scenario" data-message="ขอใบรับรองเป็นภาษาเยอรมันได้ไหม"><span class="scenario-index">04</span><b>Unknown policy</b><small>No approved answer</small></button>
+      </div>
+      <div class="demo-layout">
+        <div class="conversation-panel">
+          <div class="panel-top"><div><div class="panel-title">Patient conversation</div><div class="micro">Example Facebook Messenger / LINE OA workflow</div></div><div class="online-dot">SIMULATED</div></div>
+          <div class="chat-body" id="chat-body" aria-live="polite"><div class="chat-info">No real patient messages are stored or transmitted. This runs entirely in your browser.</div></div>
+          <form id="chat-form" class="composer"><input autocomplete="off" aria-label="Type a patient inquiry" id="chat-input" value="สนใจทำวีเนียร์ค่ะ ราคาเท่าไหร่" placeholder="Ask a question in Thai or English…"><button type="submit" class="primary-button">Send <span>↗</span></button></form>
+        </div>
+        <div class="decision-panel"><div class="panel-top"><div><div class="panel-title">Decision trace</div><div class="micro">Transparent routing, not black-box claims</div></div></div><div class="decision-stack">
+            <div class="trace-item"><span>DETECTED INTENT</span><strong id="trace-intent">Ready to evaluate</strong></div>
+            <div class="trace-item"><span>POLICY PATH</span><strong id="trace-risk">—</strong></div>
+            <div class="trace-item"><span>LEAD STATE</span><strong id="trace-stage">New inquiry</strong></div>
+            <div class="trace-item"><span>RETRIEVAL MATCH</span><strong id="trace-match">—</strong></div>
+          </div><div class="decision-note"><span class="note-icon">!</span><p><b>Safety by design.</b> Clinical decisions and uncertain requests are routed for human review. The prototype does not diagnose patients or update a clinic database.</p></div>
+          <button id="go-booking" class="ghost-button">Explore booking rules <span>→</span></button>
+        </div>
+      </div>
+    </section>
+    <section class="view" id="view-booking">
+      <div class="page-heading"><div><h1>Not every available hour is <em>a valid appointment.</em></h1><p>A simple deterministic rules engine checks service eligibility, dentist, day and time. This is how we avoid false confirmations.</p></div><span class="eyebrow-pill">SIMULATED SCHEDULE</span></div>
+      <div class="work-grid"><div class="panel booking-card"><div class="panel-title large">Try a booking request</div><div class="form-grid"><label>Service<select id="service-select"></select></label><label>Dentist<select id="doctor-select"></select></label><label>Day<select id="day-select"></select></label><label>Time<select id="time-select"></select></label></div><button id="check-slot" class="primary-button big">Check eligibility <span>↗</span></button><div id="booking-result" class="result-box" role="status">Choose a combination and check the fictional clinic rules.</div></div><div class="panel schedule-card"><div class="panel-title large">Fictional clinic schedule</div><p class="helper">The table below is deliberately synthetic—not connected to any actual dentist or clinic system.</p><div class="schedule-table" id="schedule-table"></div></div></div>
+      <div class="principle-strip"><b>Integration principle</b><span>Clinic-approved rules → authorized practice-management connector → validated write-back → acknowledgement</span><span class="soon">FUTURE SCOPE</span></div>
+    </section>
+    <section class="view" id="view-insights">
+      <div class="page-heading"><div><h1>Answering messages is useful. <em>Proving value is better.</em></h1><p>We want clinics to measure the full journey: advertisement → inquiry → qualified lead → booking → attended visit.</p></div><span class="eyebrow-pill">ALL FIGURES SYNTHETIC</span></div>
+      <div class="kpi-grid"><div class="kpi"><div>Incoming inquiries</div><strong>60</strong><small>Fictional sample</small></div><div class="kpi"><div>Qualified leads</div><strong>41</strong><small>68% of inquiries</small></div><div class="kpi"><div>Booking requests</div><strong>26</strong><small>43% of inquiries</small></div><div class="kpi accent"><div>Attended visits</div><strong>11</strong><small>18% of inquiries</small></div></div>
+      <div class="insights-grid"><div class="panel funnel-panel"><div class="panel-title large">Illustrative conversion funnel</div><p class="helper">Example pipeline, not actual clinic performance or an observed conversion rate.</p><div id="funnel-chart" class="funnel-chart"></div></div><div class="panel opportunity-panel"><div class="panel-title large">The outcome we want to measure</div><div class="math-line">Ad spend <span>→</span> Qualified inquiries <span>→</span> Attended visits</div><div class="divider"></div><div class="metric-label">Future pilot metrics</div><ul><li>Response coverage after hours</li><li>Answer accuracy and escalation quality</li><li>Appointment-request → attendance conversion</li><li>Admin time saved and campaign cost per attended visit</li></ul><div class="caution">No ROI claims until real clinic data and attribution permissions are available.</div></div></div>
+    </section>
+    <section class="view" id="view-architecture">
+      <div class="page-heading"><div><h1>Start small. Build toward <em>a dependable operating layer.</em></h1><p>The concept is deliberately split between what runs today and what needs validation, permissions, and integration.</p></div></div>
+      <div class="architecture-rail"><div class="architecture-node"><span>01</span><b>Patient inquiry</b><small>Ads / organic DMs</small></div><div class="architecture-arrow">→</div><div class="architecture-node"><span>02</span><b>Safety router</b><small>Clinical red flags</small></div><div class="architecture-arrow">→</div><div class="architecture-node"><span>03</span><b>Approved FAQ retrieval</b><small>Character n-grams</small></div><div class="architecture-arrow">→</div><div class="architecture-node"><span>04</span><b>Booking check</b><small>Rule constraints</small></div><div class="architecture-arrow">→</div><div class="architecture-node future"><span>05</span><b>Clinic connector</b><small>Future authorized API / adapter</small></div></div>
+      <div class="capability-grid"><div class="panel capability"><span class="cap-icon">✓</span><h3>Works in this demo</h3><p>Local inquiry routing, approved sample FAQs, Thai/English templates, synthetic booking checks, and a fictional funnel.</p></div><div class="panel capability"><span class="cap-icon amber">↗</span><h3>Requires a real pilot</h3><p>Approved clinical knowledge, messaging-channel permissions, dental software integration, patient consent, staff workflows, and measurable results.</p></div><div class="panel capability"><span class="cap-icon blue">◎</span><h3>Potential ML roadmap</h3><p>Reviewed labeled conversations, retrieval evaluations, calibrated confidence, approved RAG, and fine-tuning only if tests justify it.</p></div></div>
+      <div class="footnote">Built as a public demonstration only. Do not paste real patient information into the prototype.</div>
+    </section>
+    <footer class="footer"><span>Dental AI / Venture concept</span><span>Idea-stage portfolio artifact · Synthetic data · 2026</span></footer>
+  </main>
+</div>
+<script type="module" src="./src/app.mjs"></script>
+</body>
+</html>
