@@ -7,11 +7,9 @@ An interactive, open-in-your-browser **proof of concept** for an AI-assisted fro
 > **STATUS: IDEA-STAGE PROTOTYPE / NOT FOR PATIENT USE**  
 > All patient messages, staff identities, schedules, conversion figures, and knowledge entries are fictional or illustrative. No trained LLM, clinic connection, payment processing, or real booking exists. Sample informational replies have not been clinically reviewed.
 
-![Illustrative preview of the Dental AI prototype UI](assets/preview.png)
+**Interactive prototype:** Open `index.html` through a local HTTP server, or enable GitHub Pages for this repository.
 
-*Illustrative layout preview; the actual interactive prototype is implemented in `index.html`.*
-
-**Live demo:** After publishing GitHub Pages, verify this proposed URL: `https://PollyCentry24.github.io/dental-ai-patient-conversion-poc/` (not live until deployed).
+**Planned live demo URL:** `https://PollyCentry24.github.io/dental-ai-patient-conversion-poc/` (available after GitHub Pages is enabled in Settings → Pages).
 
 ## What you can try in 2 minutes
 
@@ -42,7 +40,7 @@ Urgent / clinical-risk keyword routing ------> Human / dentist escalation notice
 Appointment-intent detection -----------------> Booking demo (sample constraints)
        |
        v
-Character n-gram TF-IDF-style FAQ retrieval --> Pre-written sample response
+Transparent keyword-based FAQ retrieval --> Pre-written sample response
        |
        v
 No reliable match? ---------------------------> Staff review, no fabricated answer
@@ -50,7 +48,7 @@ No reliable match? ---------------------------> Staff review, no fabricated answ
 Independent synthetic conversion dashboard (for evaluation concept only)
 ```
 
-**Technical honesty:** The retrieval engine uses lightweight, locally implemented character n-gram weighting and similarity. It is an information-retrieval demonstration, **not** a trained medical LLM, validated AI classifier, clinical decision system, or production RAG implementation. The rules engine is deterministic. The website runs entirely on the client side with no APIs and does not persist data.
+**Technical honesty:** The retrieval engine uses lightweight, locally implemented keyword matching. It is an information-retrieval demonstration, **not** a trained medical LLM, validated AI classifier, clinical decision system, or production RAG implementation. The rules engine is deterministic. The website runs entirely on the client side with no APIs and does not persist data.
 
 ## Stack
 
@@ -79,7 +77,7 @@ index.html                 # Browser UI
 style.css                  # Responsive visual design
 src/app.mjs                # Interactive prototype
 src/engine.mjs             # Safe routing, FAQ retrieval, booking rules
-assets/preview.png         # Illustrative layout preview
+index.html                 # The actual interactive browser interface
 tests/engine.test.mjs      # 12 automated core tests
 .github/workflows/         # Automated tests on push
 docs/architecture.md       # Technical decisions and limitations
@@ -93,7 +91,7 @@ profile/README-template.md # Optional GitHub profile introduction
 | Hypothesis | Proposed experiment | Initial metric |
 |---|---|---|
 | Inquiries are delayed after hours | Interview and observe 5 independent clinics | After-hours coverage and typical response delay |
-| FAQ responses can be accurate | Dentist-review 50–100 test inquiries | Exact-answer accuracy, source correctness, escalation rate |
+| FAQ responses can be accurate | Dentist-review 50–100 test inquiries | Exact-answer accuracy, sample source matching, escalation rate |
 | Unsafe cases are routed appropriately | Build a clinician-reviewed red-flag scenario set | **Zero critical false reassurances** in the test set |
 | Booking rules reduce scheduling errors | Test service, dentist, chair, buffer, deposit constraints | No false confirmations or duplicate reservations |
 | Value is meaningful | Run a consented clinic pilot | Bookings and attended visits per qualified lead; staff time saved |
