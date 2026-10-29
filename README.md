@@ -50,6 +50,10 @@ The public website now follows the same **Centry 24 patient journey** shown in t
 
 Read the [one-minute illustrated workflow guide](docs/demo-walkthrough.md). This remains a scripted, deterministic proof of concept — not an LLM, diagnosis tool, integrated booking system or real conversion measurement.
 
+## The clinic pilot evidence plan
+
+Our next validation step is a privacy-safe, two-clinic baseline and an outcome-based ROI test. Read the [clinic pilot measurement plan](docs/clinic-pilot-measurement-plan.md). It distinguishes hypothetical calculations from observed traction and defines clinical safety boundaries.
+
 ## What you can try in 2 minutes
 
 1. **Conversation Lab:** Select an advertisement-generated veneer inquiry. The demo retrieves a pre-written informational response from its sample FAQ library.
