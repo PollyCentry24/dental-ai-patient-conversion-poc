@@ -7,9 +7,40 @@ An interactive, open-in-your-browser **proof of concept** for an AI-assisted fro
 > **STATUS: IDEA-STAGE PROTOTYPE / NOT FOR PATIENT USE**  
 > All patient messages, staff identities, schedules, conversion figures, and knowledge entries are fictional or illustrative. No trained LLM, clinic connection, payment processing, or real booking exists. Sample informational replies have not been clinically reviewed.
 
-**Interactive prototype:** Open `index.html` through a local HTTP server, or enable GitHub Pages for this repository.
+## Live interactive demo
 
-**Planned live demo URL:** `https://PollyCentry24.github.io/dental-ai-patient-conversion-poc/` (available after GitHub Pages is enabled in Settings → Pages).
+**[Open the Centry 24 Dental AI demonstration](https://pollycentry24.github.io/dental-ai-patient-conversion-poc/#demo)**
+
+GitHub Pages is enabled. The [October 28, 2026 build and deployment](https://github.com/PollyCentry24/dental-ai-patient-conversion-poc/actions/runs/40687045943) completed successfully. The public site and the interactions below were independently checked in a desktop Chrome browser on **October 29, 2026 (Bangkok time)**; the site loaded without the previously reported Not Found page. No Pages setup is needed to view this repository's demo.
+
+### Live browser verification — October 29, 2026
+
+| Check | Observed result |
+|---|---|
+| Public demo opens | Patient journey and conversation interface load |
+| 01 Patient asks | Thai veneer inquiry displays a pre-written sample FAQ response |
+| 02 Check a slot | Prefills veneer consultation, Dr. Mira, Saturday, 11:00 |
+| Eligible fictional slot | Check eligibility reports eligible and explicitly says no real booking is made |
+| Invalid dentist combination | Changing to Dr. Narin reports not available and staff review |
+| 03 Track the visit and booking-to-funnel button | Both open the synthetic funnel: 60 inquiries → 41 qualified leads → 26 booking requests → 11 attended visits |
+| After-hours booking scenario | Shows an appointment-request response without confirming a real appointment |
+| Clinical escalation scenario | Shows the scripted escalation notice, not a diagnosis |
+| Unknown-policy scenario | Shows the staff-review fallback |
+| Typed inquiry and Send | “What are veneers?” retrieves the sample veneer FAQ (Thai response) |
+| System & safeguards | Opens the implemented capabilities, pilot requirements, and ML roadmap |
+
+This is a point-in-time desktop browser smoke check of the listed scenarios, not exhaustive browser/device testing or clinical validation.
+
+### Implemented prototype versus proposed capabilities
+
+| Implemented in this browser demo | Proposed; not operational |
+|---|---|
+| Simulated Facebook inquiry and local keyword-based FAQ lookup | Live Facebook/LINE messaging, trained AI/LLM or production RAG |
+| Scripted escalation and staff-review notices | Actual staff notifications, handoff queues or clinical decision-making |
+| Deterministic checks against fictional service/dentist/day/time rules | Real availability, appointment confirmation, reservations, payments or clinic database write-back |
+| Fixed synthetic conversion funnel | Live patient tracking, campaign attribution, clinic results or proven ROI |
+
+The funnel is an independent illustrative dataset: submitting a message or checking a slot does not create a patient record or update the funnel. English keywords may retrieve Thai sample replies; this is not a conversational translation service.
 
 ## See the slide demo as a guided walkthrough
 
@@ -23,7 +54,7 @@ Read the [one-minute illustrated workflow guide](docs/demo-walkthrough.md). This
 
 1. **Conversation Lab:** Select an advertisement-generated veneer inquiry. The demo retrieves a pre-written informational response from its sample FAQ library.
 2. **Clinical Escalation:** Select a patient describing severe swelling/pain. The safety router prioritizes escalation rather than giving a diagnosis.
-3. **Booking Rules:** Try a valid and an invalid combination of fictional treatment, dentist, day and time. Observe that invalid combinations cannot be booked.
+3. **Booking Rules:** Try a valid and an invalid combination of fictional treatment, dentist, day and time. Observe that invalid combinations are rejected by the sample eligibility check; no combination creates a real booking.
 4. **Conversion Signals:** Explore a *synthetic* funnel from 60 inquiries to 11 fictional attended visits, illustrating the business KPI we want to measure in a future clinic pilot.
 
 ## Why this problem matters
@@ -85,7 +116,6 @@ index.html                 # Browser UI
 style.css                  # Responsive visual design
 src/app.mjs                # Interactive prototype
 src/engine.mjs             # Safe routing, FAQ retrieval, booking rules
-index.html                 # The actual interactive browser interface
 tests/engine.test.mjs      # 12 automated core tests
 .github/workflows/         # Automated tests on push
 docs/architecture.md       # Technical decisions and limitations
@@ -128,4 +158,4 @@ Conceived from the perspective of a **dentist's daughter with direct exposure to
 
 ---
 
-**If you are reviewing this as an accelerator:** Start with the four scenario buttons in the live demo, then read [`docs/evaluation-plan.md`](docs/evaluation-plan.md). This is evidence of problem decomposition and early execution—not a claim of product-market fit.
+**If you are reviewing this as an accelerator:** Start with the three guided patient-journey buttons in the [live demo](https://pollycentry24.github.io/dental-ai-patient-conversion-poc/#demo), then try the four conversation scenarios, then read [`docs/evaluation-plan.md`](docs/evaluation-plan.md). This is evidence of problem decomposition and early execution—not a claim of product-market fit.
